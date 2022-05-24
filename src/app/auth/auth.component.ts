@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, ViewChild } from "@angular/core";
+import { Component, ComponentFactoryResolver, OnDestroy, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { from, Observable, Subscription } from "rxjs";
@@ -11,7 +11,7 @@ import { AuthResponseData, AuthService } from "./auth.service";
     selector: 'app-auth',
     templateUrl: './auth.component.html'
 })
-export class AuthComponent {
+export class AuthComponent implements OnDestroy {
     isLoginMode = true;
     isLoading = false;
     error: string = null;
@@ -57,6 +57,12 @@ export class AuthComponent {
 
     onHandleError() {
         this.error = null;
+    }
+
+    ngOnDestroy(): void {
+        if (this.closeSub) {
+            this.closeSub.unsubscribe();
+        }
     }
 
     private showErrorAlert(message: string) {
