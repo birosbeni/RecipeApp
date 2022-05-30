@@ -29,13 +29,13 @@ export function shoppingListReducer(state: State = initialState, action: Shoppin
         ingredients: [...state.ingredients, ...action.payload]
       };
     case ShoppingListActions.UPDATE_INGREDIENT:
-      const ingredient = state.ingredients[state.editedIngredientIndex  ]
+      const ingredient = state.ingredients[state.editedIngredientIndex];
       const updatedIngredient = {
         ...ingredient,
         ...action.payload
-      }
+      };
       const updatedIngredients = [...state.ingredients];
-      updatedIngredient[state.editedIngredientIndex] = updatedIngredient;
+      updatedIngredients[state.editedIngredientIndex] = updatedIngredient;
 
       return {
         ...state,
