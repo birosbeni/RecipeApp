@@ -42,10 +42,10 @@
                     <div class="row" *ngFor="let ingredient of controls; let i = index" [formGroupName]="i"
                         style="margin-top: 10px;">
                         <div class="col-xs-8">
-                            <input type="text" id="imagePath" class="form-control" formControlName="name">
+                            <input type="text" class="form-control" formControlName="name">
                         </div>
                         <div class="col-xs-2">
-                            <input type="number" id="imagePath" class="form-control" formControlName="amount">
+                            <input type="number" class="form-control" formControlName="amount">
                         </div>
                         <div class="col-xs-2">
                             <button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)">X</button>
